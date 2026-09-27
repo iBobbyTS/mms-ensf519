@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-primary: oklch(0.6 0.2 250);
+}
+
+:root {
+  --app-navbar-height: 4rem;
+  --app-scroll-offset: calc(var(--app-navbar-height) + 1rem);
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: var(--color-base-200);
+}
+
+html {
+  scroll-padding-top: var(--app-scroll-offset);
+}
+
+:where(input, select, textarea, button, [tabindex], [id]) {
+  scroll-margin-top: var(--app-scroll-offset);
+}
+
+/* Keep member form Dropdown controls visually aligned with DaisyUI inputs. */
+.member-form-scope {
+  --suu-color-bg: var(--color-base-100);
+}
+
+.member-form-scope .suu-dropdown {
+  width: 100%;
+}
+
+.member-form-scope .suu-dropdown__button {
+  width: 100%;
+}
+
+@layer components {
+  .page-shell {
+    @apply space-y-6;
+  }
+
+  .page-header {
+    @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .page-title {
+    @apply flex items-center gap-2 text-3xl font-bold;
+  }
+
+  .page-title-icon {
+    @apply h-8 w-8 text-primary;
+  }
+
+  .ui-panel {
+    @apply rounded-box border border-base-200 bg-base-100 shadow-sm;
+  }
+
+  .ui-panel-body {
+    @apply p-6;
+  }
+
+  .ui-table-panel {
+    @apply overflow-x-auto rounded-box border border-base-200 bg-base-100 shadow-sm;
+  }
+
+  .ui-subpanel {
+    @apply rounded-box bg-base-200/50 p-4;
+  }
+
+  .client-detail-cell-grid--three,
+  .client-detail-cell-grid--two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 400px) {
+    .client-detail-cell-grid--three,
+    .client-detail-cell-grid--two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 770px) {
+    .client-detail-cell-grid--three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .ui-section-title {
+    @apply card-title text-xl;
+  }
+
+  .ui-action-row {
+    @apply flex flex-wrap justify-end gap-3;
+  }
+
+  .ui-action-row--floating {
+    @apply fixed right-4 z-40 rounded-box border border-base-300 bg-base-100/95 p-2 shadow-lg backdrop-blur-sm sm:right-6;
+    top: calc(var(--app-navbar-height) + 0.75rem);
+  }
+
+  .ui-modal-box {
+    @apply modal-box rounded-box border border-base-200 bg-base-100 shadow-xl;
+  }
+
+  .modal.modal-open .ui-modal-box,
+  .modal[open] .ui-modal-box,
+  .modal:target .ui-modal-box,
+  .modal-toggle:checked + .modal .ui-modal-box {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+  }
+}
