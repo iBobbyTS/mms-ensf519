@@ -4,6 +4,13 @@ A standalone extract of four pages from the SCSC Membership Management System (M
 a SvelteKit application for a community services centre. This repository was prepared
 as the reference project for the ENSF 519 course assignment.
 
+## Demo video
+
+[demo_video.mov](demo_video.mov) is a 30-second screen recording of the four pages
+(member directory, member detail, interest group management, and interest group
+check-in), captured against the seeded demo dataset described below. Download the file
+and play it locally.
+
 ## Pages
 
 | Page | Route | Interactions |
