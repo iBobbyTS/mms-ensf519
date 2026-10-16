@@ -15,6 +15,7 @@
     import { setThemePreference, themePreference } from "$lib/theme";
 
     let { children } = $props();
+    let browserReady = $state(false);
 
     const currentLanguage = $derived(page.data.locale as SupportedLanguageTag);
     const messages = m as unknown as Record<string, (...args: never[]) => string>;
@@ -91,6 +92,7 @@
     }
 
     onMount(() => {
+        browserReady = true;
         let navbarDropdownInteractionActive = false;
         const navbarDropdownSelector = ".nav-dropdown--theme, .nav-dropdown--language";
         const unsubscribeTheme = themePreference.subscribe((value) => {
@@ -191,6 +193,7 @@
     </div>
 
     <main
+        data-browser-ready={browserReady}
         class="flex-grow p-4 md:p-8 w-full mx-auto"
         class:max-w-7xl={!fullWidthPage}
         class:max-w-none={fullWidthPage}

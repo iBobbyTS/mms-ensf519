@@ -1,8 +1,5 @@
 import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { shouldDisableRemoteBrowserRun } from './src/lib/browser-run-development.js';
-
-const disableRemoteBrowserRun = shouldDisableRemoteBrowserRun(process.env);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -16,7 +13,8 @@ const config = {
 		// removed kit.bodySizeLimit, so no framework-level body limit applies here.
 		adapter: adapter({
 			platformProxy: {
-				remoteBindings: !disableRemoteBrowserRun
+				// This course extract uses local D1 only. Avoid remote proxy startup.
+				remoteBindings: false
 			}
 		})
 	}
